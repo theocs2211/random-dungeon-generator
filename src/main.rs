@@ -1,18 +1,19 @@
-use isaac_dungeon_generator::{generate_rooms, RoomType};
+use isaac_dungeon_generator::{RoomType, generate_rooms};
 
 fn main() {
-    let grid = generate_rooms(1);
+    let grid = generate_rooms(10, None);
 
-    for linha in grid {
-        for room in linha {
+    for row in grid.iter() {
+        for room in row.iter() {
             match room {
-                Some(RoomType::Start) => print!("[ S ]"),
-                Some(RoomType::Normal) => print!("[ N ]"),
-                Some(RoomType::Boss) => print!("[ B ]"),
-                Some(RoomType::Treasure) => print!("[ T ]"),
-                None => print!("[ . ]"),
+                Some(RoomType::Start) => print!("[S]"),
+                Some(RoomType::Normal) => print!("[N]"),
+                Some(RoomType::Boss) => print!("[B]"),
+                Some(RoomType::Treasure) => print!("[T]"),
+                None => print!(" . "),
             }
         }
         println!();
     }
 }
+
